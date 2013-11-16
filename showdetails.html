@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=0.87,maximum-scale=0.87,user-scalable=no" >
+		<link rel="stylesheet" type="text/css" href="css/apptheme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css">
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+	</head>
+<body>
+	<div data-role="page" id="detailspage" data-theme="f" style="background:url('images/seam.jpg')">
+	<script src="js/numeral.min.js"></script>
+			<div data-role="header" data-theme="f">
+			<span style="float:left;margin-left:10px;"><a href="getfromregion.html" target="_self"><br><img id="menupanel" src="images/panel.png" style="height:42px;"></a></span>
+			<br>
+			<h4 id="headtitle">SARO Details</h4>
+			<br>
+			</div>
+			<div data-role="content" >
+			<div id="pagecont">
+			<h4 style="text-align:center">Special Allotment Release Order<br>F.Y. 2013-2014</h4>
+			<img id="imgloader" src="images/ajax-loader.gif" style="width:58px;opacity:0.5;margin-left:auto;margin-right:auto;display:block">
+			<ul data-role="listview" id="listall" data-theme="f" data-divider-theme="c" data-inset="true">
+			</ul>
+			<div id="scontrols">
+			
+			</div>
+			</div>
+			</div>
+	<script>
+	$.ajaxSetup({ cache: false });
+	function getlikes(id){ 
+	var btnslct = $("#spost-"+id);
+	if(btnslct.hasClass("postliked") == true)
+	 {
+	btnslct.removeClass("postliked").addClass("postnotliked").buttonMarkup({ theme: "c" });
+	$.getJSON("http://gcccs.org/ibantay/likepost.php?callback=?",{username : localStorage.getItem("datausername"), entryID : id, type: 'd'},function(data)
+			{
+			});
+	 }
+	else
+	{
+	btnslct.removeClass("postnotliked").addClass("postliked").buttonMarkup({ theme: "f" });
+	$.getJSON("http://gcccs.org/ibantay/likepost.php?callback=?",{username : localStorage.getItem("datausername"), entryID : id, type: 'l'},function(data)
+			{
+			});
+	}
+	}
+	setTimeout(function() { 
+	$.getJSON("http://gcccs.org/ibantay/getresponse.php?callback=?",{id: localStorage.getItem("dataIDs")},function(data)
+			{
+			var pagecont = $("#listall");
+			var saroinfo = "";
+			var controloptions ="";
+			$.each(data.data, function(key, value) {
+			saroinfo = '<li data-role="list-divider">Information</li><li><table cellspacing="0"cellpadding="0" class="desctable"><tr><th>Department Code:</th><td>'+value['department_code']+'</td></tr><tr><th>Department Code:</th><td>'+value['agency_code']+'</td></tr><tr><th>Operating Unit:</th><td>'+value['operating_unit']+'</td></tr><tr><th>Special Purpose Fund Code:</th><td>'+value['spf_code']+'</td></tr><tr><th>Sub Special Purpose Fund Code:</th><td>'+value['sub_spf_code']+'</td></tr><tr><th>AGENCY/SUB-AGENCY/SPF/SUBSPF Description:</th><td>'+value['description']+'</td></tr><tr><th>Recipient Fund Code:</th><td>'+value['fund_code']+'</td></tr><tr><th>Region:</th><td>'+value['region']+'</td></tr><tr><th>Fund Purpose:</th><td>'+value['purpose']+'</td></tr><tr><th>Appropriation Source:</th><td>'+value['appro_src']+'</td></tr><tr><th>Program/Activity/Project Code:</th><td>'+value['program_code']+'</td></tr><tr><th>Description of Program/Activity/Project Code:</th><td>'+value['program_description']+'</td></tr><tr><th>SubObject Code:</th><td>'+value['object_code']+'</td></tr><tr><th>SubObject Description:</th><td>'+value['object_description']+'</td></tr><tr><th>SARO Amount from eBUDGET:</th><td>Php. '+numeral(value['amount']).format('0,0')+'</td></tr><tr><th>Date of Release:</th><td>'+value['issue_date']+'</td></tr><tr><th>Barcode No.:</th><td>'+value['barcode_no']+'</td></tr><tr><th>SARO No.:</th><td>'+value['saro_no']+'</td></tr></table></li>';
+			pagecont.append(saroinfo).trigger('create');
+			$.getJSON("http://gcccs.org/ibantay/retrievelikes.php?callback=?",{entryID: value['id'],username: localStorage.getItem("datausername")},function(data)
+			{
+			var disablelike = ["c",'class="postnotliked" '];
+			if(data.response == "liked")
+			{
+				disablelike[0] = 'f';
+				disablelike[1] = 'class="postliked" ';
+			}
+			controloptions = '<div data-role="controlgroup" data-type="horizontal"><a id="spost-'+value['id']+'" href="javascript:getlikes(\''+value['id']+'\')" data-role="button" data-theme="'+disablelike[0]+'" '+disablelike[1]+'>Like Me!</a><a href="#" data-role="button" data-theme="c">Facebook</a><a href="#" data-role="button" data-theme="c">Twitter</a></div>';
+			$("#scontrols").append(controloptions).trigger('create');
+			});
+			pagecont.listview( "refresh" );
+			});
+			$("#imgloader").hide();
+			});
+	}, 500);
+	</script>
+	</div>
+</body>
+</html>

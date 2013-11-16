@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=0.87,maximum-scale=0.87,user-scalable=no" >
+		<link rel="stylesheet" type="text/css" href="css/apptheme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css">
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+	</head>
+<body>
+	<div data-role="page" id="ncrpage" data-theme="f" style="background:url('images/seam.jpg')">
+	<script src="js/numeral.min.js"></script>
+			<div data-role="header" data-theme="f">
+			<span style="float:left;margin-left:10px;"><a href="home.html"><br><img id="menupanel" src="images/panel.png" style="height:42px;"></a></span>
+			<br><h4>Select a Region:</h4><br>
+			</div>
+			<div data-role="content" >
+			<div id="pagecont">
+			<ul data-role="listview" id="listall">
+				<li><a href="javascript:getsarodetails('CAR')">CAR</a></li>
+				<li><a href="javascript:getsarodetails('1')">REGION 1</a></li>
+				<li><a href="javascript:getsarodetails('2')">REGION 2</a></li>
+				<li><a href="javascript:getsarodetails('3')">REGION 3</a></li>
+				<li><a href="javascript:getsarodetails('NCR')">NCR</a></li>
+				<li><a href="javascript:getsarodetails('4A')">REGION 4-A</a></li>
+				<li><a href="javascript:getsarodetails('4B')">REGION 4-B</a></li>
+				<li><a href="javascript:getsarodetails('5')">REGION 5</a></li>
+				<li><a href="javascript:getsarodetails('6')">REGION 6</a></li>
+				<li><a href="javascript:getsarodetails('7')">REGION 7</a></li>
+				<li><a href="javascript:getsarodetails('8')">REGION 8</a></li>
+				<li><a href="javascript:getsarodetails('9')">REGION 9</a></li>
+				<li><a href="javascript:getsarodetails('10')">REGION 10</a></li>
+				<li><a href="javascript:getsarodetails('11')">REGION 11</a></li>
+				<li><a href="javascript:getsarodetails('12')">REGION 12</a></li>
+				<li><a href="javascript:getsarodetails('13')">REGION 13</a></li>
+				<li><a href="javascript:getsarodetails('ARMM')">ARMM</a></li>
+				
+			</ul>
+			</div>
+			</div>
+	<script>
+	$.ajaxSetup({ cache: false });
+	function getsarodetails(id)
+	{
+	localStorage.setItem("dataregion", id);
+	location.href="objdescselect.html";
+	}
+	</script>
+	</div>
+</body>
+</html>

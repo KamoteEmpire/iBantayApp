@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<me<meta name="viewport" content="initial-scale=0.87,maximum-scale=0.87,user-scalable=no" >
+		<link rel="stylesheet" type="text/css" href="css/apptheme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css">
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+	</head>
+<body>
+	<div data-role="page" id="loginpage" data-theme="f" style="background:url('images/seam.jpg')">
+			<div data-role="header" data-theme="f">
+			<br>
+			<img src="images/ibantaylogo.png" style="width:85%;margin-left:auto;margin-right:auto;display:block">
+			<br>
+			</div>
+			<div data-role="content">
+			<div style="margin-left:auto;margin-right:auto;display:block;width:300px;">
+			<form id="loginform" action="javascript:verifyfirst()">
+				<input type="text" name="username" id="username" placeholder="Username">
+				<input type="password" name="pass" id="lpass" placeholder="Password">
+				<input type="submit" value="Log In" id="btnlogin">
+			</form>
+			</div>
+			<br>
+			<a href="register.html" data-transition="fade" data-role="button">Register for Kabantay Account</a>
+			</div>
+			<div data-role="popup" id="popupAfter" data-theme="b"  style="width:300px">
+			<p id="popuptext"></p>
+			</div>
+			<script>
+			var lform = $("#loginform");
+			
+			function verifyfirst(){
+			if($( "#lusername" ).val() == "" || $( "#lpass" ).val() == "")
+			{
+			return;
+			}
+			$.mobile.loading("show");
+			
+				$.getJSON("http://gcccs.org/ibantay/verifyfirst.php?callback=?", lform.serialize(),function(data)
+				{
+					if (data.verified == "v1")
+					{
+					localStorage.setItem("datausername", data.username);
+					$.mobile.changePage( "home.html", { changeHash: true });
+					}
+					else
+					{
+					$("#popuptext").html("<b>The account you've entered is not associated with Mellow. Please check your username or password.</b>");	
+					$( "#popupAfter" ).popup( "open", { 
+					positionTo: "window",
+					transition: "pop" });
+					$.mobile.loading("hide");
+					}
+				}).fail(function(data){
+				
+					$("#popuptext").html("<b>There is a problem with your login, please try again later.</b>");
+						
+						$( "#popupAfter" ).popup( "open", { 
+						positionTo: "window",
+						transition: "pop"});
+						$.mobile.loading("hide");
+					
+				});
+			}
+		</script>
+	</div>
+</body>
+</html>

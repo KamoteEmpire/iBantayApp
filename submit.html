@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=0.87,maximum-scale=0.87,user-scalable=no" >
+		<link rel="stylesheet" type="text/css" href="css/apptheme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css">
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+	</head>
+<body>
+	<div data-role="page" id="usersubmitpage" data-theme="f" style="background:url('images/seam.jpg')">
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+			<div data-role="header" data-theme="f"><span style="float:left;margin-left:10px;"><a href="home.html"><br><img id="menupanel" src="images/panel.png" style="height:42px;"></a></span>
+			<br>
+			<h4>Submit a Project</h4><br>
+			</div>
+			<div data-role="content" >
+			<div style="-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;margin-left:auto;margin-right:auto;padding:10px 10px 10px 10px;background:rgba(255,255,255,0.5)">
+			<form id="submitprojform" action="javascript:submitproj();">
+			<b>Full Name:</b>
+			<input type="text" name="fullname" id="fullname" maxlength="150" readonly>
+			<small id="errorfullname" style="color:#ff0000;display:block"></small>
+			<b>E-Mail:</b>
+			<input type="email" name="email" id="email" maxlength="50" readonly>
+			<small id="erroremail" style="color:#ff0000;display:block"></small>
+			<b>Contact Number/s:</b>
+			<input type="text" name="contact" id="contact" maxlength="50">
+			<small id="errorcontact" style="color:#ff0000;display:block"></small>
+			<br>
+			<b>Desired Name of Project:</b>
+			<input type="text" name="projname" id="projname" maxlength="150">
+			<small id="errorprojname" style="color:#ff0000;display:block"></small>
+			<b>Discuss the Purpose of your Project:</b>
+			<textarea name="projpur" id="projpur" maxlength="200"></textarea>
+			<small id="errorprojpur" style="color:#ff0000;display:block"></small>
+			<b>Location of the Project:</b>
+			<small style="color:#2373a5"><br>(Region / Province / City / School)</small>
+			<input type="text" name="projloc" id="projloc" maxlength="150">
+			<small id="errorprojloc" style="color:#ff0000;display:block"></small>
+			<br><br>
+			<input type="submit" value="Submit" id="btnsubmit">
+			</form>
+			</div>
+			
+			</div>
+			<div data-role="popup" id="popupAfter" data-theme="b"  style="width:300px">
+			<p id="popuptext"></p>
+			</div>
+	<script>
+	setTimeout(function() { 
+	$.getJSON("http://gcccs.org/ibantay/getuserdetails.php?callback=?",{username: localStorage.getItem("datausername")},function(data)
+			{
+			$("#fullname").val(data.fullname);
+			$("#email").val(data.email);
+			});
+	}, 500);
+	var form = $("#submitprojform");
+	form.validate({
+					errorPlacement: function ($error, $element) {
+						var name = $element.attr("name");
+						$("#error" + name).html($error);
+					},
+					rules: {
+						fullname: {
+							required: true,
+							minlength: 1
+						},
+						email: {
+							required: true,
+							email: true
+						},
+						contact: {
+							required: true
+						},
+						projname: {
+							required: true,
+							minlength: 8
+						},
+						projpur: {
+							required: true,
+							minlength: 8
+						},
+						projloc: {
+							required: true,
+							minlength: 8
+						}
+					},
+					messages: {
+						fullname: {
+							required: "Please enter your Full Name"
+						},
+						email: "Please enter a valid email address",
+						contact: {
+							required: "Please enter your Contact Number"
+						},
+						projname: {
+							required: "Please provide a Project Name",
+							minlength: "Project Name must be at least 8 characters long"
+						},
+						projpur: {
+							required: "Please provide a Project Purpose",
+							minlength: "Project Purpose Details must be at least 8 characters long"
+						},
+						projloc: {
+							required: "Please provide the location of your project",
+							minlength: "Your Desired Project Location must be at least 8 characters long"
+						}
+					}
+			});
+			function submitproj()
+			{
+			if(form.valid)
+				{	
+				$.mobile.loading("show");
+					$.getJSON("http://gcccs.org/ibantay/submitproj.php?callback=?", form.serialize(),function(data)
+					{
+						alert("Submit Complete!");
+						$.mobile.loading("hide");
+						
+					}).fail(function(data){
+						alert("Submit Failed!");
+						$.mobile.loading("hide");
+						
+					});
+				$.mobile.loading("hide");
+				}
+			}
+	
+	</script>
+	</div>
+</body>
+</html>

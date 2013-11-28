@@ -30,13 +30,222 @@
 			<b>Desired Name of Project:</b>
 			<input type="text" name="projname" id="projname" maxlength="150">
 			<small id="errorprojname" style="color:#ff0000;display:block"></small>
+			<b>Year of Implementation:</b>
+			<select name="projyear" id="projyear">
+			</select>
+			<b>Implementing Agency of the Project:</b>
+			<select name="projagen" id="projagen">
+			<option>Congress of the Philippines</option>
+			<option>Office of the President</option>
+			<option>Office of the Vice President</option>
+			<option>Department of Agrarian Reform</option>
+			<option>Department of Agriculture</option>
+			<option>Department of Budget and Management</option>
+			<option>Department of Education</option>
+			<option>State Colleges and Universities</option>
+			<option>Department of Energy</option>
+			<option>Department of Environment and Natural Resources</option>
+			<option>Department of Finance</option>
+			<option>Department of Foreign Affairs</option>
+			<option>Department of Health</option>
+			<option>Department of Interior and Local Government</option>
+			<option>Department of Justice</option>
+			<option>Department of Labor and Employment</option>
+			<option>Department of National Defense</option>
+			<option>Department of Public Works and Highways</option>
+			<option>Department of Science and Technology</option>
+			<option>Department of Social Welfare and Development</option>
+			<option>Department of Tourism</option>
+			<option>Department of Trade and Industry</option>
+			<option>Department of Transportation and Communication</option>
+			<option>National Economic Development Authority</option>
+			<option>Presidential Communications Operations Office</option>
+			<option>Other Executive Offices</option>
+			<option>Autonomous Region in Muslim Mindanao</option>
+			<option>Joint Legislative-Executive Councils</option>
+			<option>The Judiciary</option>
+			<option>Civil Service Commission</option>
+			<option>Commission on Audit</option>
+			<option>Commission on Elections</option>
+			<option>Office of the Ombudsman</option>
+			<option>Commission on Human Rights</option>
+			</select>
 			<b>Discuss the Purpose of your Project:</b>
-			<textarea name="projpur" id="projpur" maxlength="200"></textarea>
+			<input type="text" name="projpur" id="projpur" maxlength="150">
 			<small id="errorprojpur" style="color:#ff0000;display:block"></small>
 			<b>Location of the Project:</b>
-			<small style="color:#2373a5"><br>(Region / Province / City / School)</small>
-			<input type="text" name="projloc" id="projloc" maxlength="150">
+			<select name="projloc" id="projloc">
+			<optgroup label="National Capital Region">
+			<option value="NCR - Manila">Manila</option>
+			<option value="NCR - Caloocan">Caloocan</option>
+			<option value="NCR - Quezon City">Quezon City</option>
+			<option value="NCR - Makati">Makati</option>
+			<option value="NCR - Taguig">Taguig</option>
+			<option value="NCR - Las Pinas">Las Pinas</option>
+			<option value="NCR - Mandaluyong">Mandaluyong</option>
+			<option value="NCR - Pasig">Pasig</option>
+			<option value="NCR - Navotas">Navotas</option>
+			<option value="NCR - Malabon">Taguig</option>
+			<option value="NCR - Pasay">Pasay</option>
+			<option value="NCR - Pateros">Pateros</option>
+			<option value="NCR - Marikina">Marikina</option>
+			<option value="NCR - Muntinlupa">Muntinlupa</option>
+			<option value="NCR - Paranaque">Paranaque</option>
+			<option value="NCR - San Juan">San Juan</option>
+			<option value="NCR - Valenzuela">Valenzuela</option>
+</optgroup>
+
+<optgroup label="Region 1 - Ilocos Region">
+			<option value="R1 - San Fernando City">San Fernando City</option>
+			<option value="R1 - locos Norte">Ilocos Norte</option>
+			<option value="R1 - Ilocos Sur">Ilocos Sur</option>
+			<option value="R1 - La Union">La Union</option>
+			<option value="R1 - Pangasinan">Pangasinan</option>
+</optgroup>
+
+<optgroup label="CAR - Cordillera Administrative Region">
+			<option value="CAR - Baguio City">Baguio City</option>
+			<option value="CAR - Abra">Abra</option>
+			<option value="CAR - Apayao">Apayao</option>
+			<option value="CAR - Benguet">Benguet</option>
+			<option value="CAR - Ifugao">Ifugao</option>
+			<option value="CAR - Kalinga">Kalinga</option>
+			<option value="CAR - Mountain Province">Mountain Province</option>
+</optgroup>
+
+
+<optgroup label="R2 - Cagayan Valley">
+			<option value="R2 - Tuguegarao City">Tuguegarao City</option>
+			<option value="R2 - Batanes">Batanes</option>
+			<option value="R2 - Cagayan">Cagayan</option>
+			<option value="R2 - Isabela">Isabela</option>
+			<option value="R2 - Nueva Viscaya">Nueva Viscaya</option>
+			<option value="R2 - Quirino">Quirino</option>
+</optgroup>
+
+
+<optgroup label="R3 - Central Luzon">
+			<option value="R3 - San Fernando City">San Fernando City</option>
+			<option value="R3 - Aurora">Aurora</option>
+			<option value="R3 - Bataan">Bataan</option>
+			<option value="R3 - Bulacan">Bulacan</option>
+			<option value="R3 - Nueva Ecija">Nueva Ecija</option>
+			<option value="R3 - Pampanga">Pampanga</option>
+			<option value="R3 - Tarlac">Tarlac</option>
+			<option value="R3 - Zambales">Zambales</option>
+</optgroup>
+
+<optgroup label="R4A - CALABARZON">
+			<option value="R4A - Calamba City">Calamba City</option>
+			<option value="R4A - Batangas">Batangas</option>
+			<option value="R4A - Cavite">Cavite</option>
+			<option value="R4A - Laguna">Laguna</option>
+			<option value="R4A - Quezon">Quezon</option>
+			<option value="R4A - Rizal">Rizal</option>
+</optgroup>
+
+<optgroup label="R4B - MIMAROPA">
+			<option value="R4B - Calapan City">Calapan City</option>
+			<option value="R4B - Marinduque">Marinduque</option>
+			<option value="R4B - Occidental Mindoro">Occidental Mindoro</option>
+			<option value="R4B - Oriental Mindoro">Oriental Mindoro</option>
+			<option value="R4B - Palawan">Palawan</option>
+			<option value="R4B - Romblon">Romblon</option>
+</optgroup>
+
+<optgroup label="R5 - Bicol Region">
+			<option value="R5 - Legazpi City">Legazpi City</option>
+			<option value="R5 - Albay">Albay</option>
+			<option value="R5 - Camarines Norte">Camarines Norte</option>
+			<option value="R5 - Camarines Sur">Camarines Sur</option>
+			<option value="R5 - Catanduanes">Catanduanes</option>
+			<option value="R5 - Masbate">Masbate</option>
+			<option value="R5 - Sorsogon">Sorsogon</option>
+</optgroup>
+
+<optgroup label="R6 - Western Visayas">
+			<option value="R6 - Iloilo City">Iloilo City</option>
+			<option value="R6 - Aklan">Aklan</option>
+			<option value="R6 - Antique">Antique</option>
+			<option value="R6 - Capiz">Capiz</option>
+			<option value="R6 - Guimaras">Guimaras</option>
+			<option value="R6 - Iloilo">Iloilo</option>
+</optgroup>
+
+<optgroup label="R7 - Central Visayas">
+			<option value="R7 - Cebu City">Cebu City</option>
+			<option value="R7 - Bohol">Bohol</option>
+			<option value="R7 - Cebu">Cebu</option>
+			<option value="R7 - Siquijor">Siquijor</option>
+</optgroup>
+ 
+
+<optgroup label="R8 - Eastern Visayas">
+			<option value="R8 - Tacloban City">Tacloban City</option>
+			<option value="R8 - Biliran">Biliran</option>
+			<option value="R8 - Eastern Samar">Eastern Samar</option>
+			<option value="R8 - Leyte">Leyte</option>
+			<option value="R8 - Northern Samar">Northern Samar</option>
+			<option value="R8 - Samar">Samar</option>
+			<option value="R8 - Southern Leyte">Southern Leyte</option>
+</optgroup>
+
+<optgroup label="R9 - Zamboanga Peninsula">
+			<option value="R9 - Pagadian City">Pagadian City</option>
+			<option value="R9 - Zamboanga del Norte">Zamboanga del Norte</option>
+			<option value="R9 - Zamboanga del Sur">Zamboanga del Sur</option>
+			<option value="R9 - Zamboanga Sibugay">Sibugay</option>
+</optgroup>
+
+<optgroup label="R10 – Northern Mindanao"> 
+			<option value="R10 – Bukidnon">Bukidnon</option> 
+			<option value="R10 – Cagayan de Oro">Cagayan de Oro</option> 
+			<option value="R10 – Camiguin">Camiguin</option> 
+			<option value="R10 – Iligan">Iligan</option> 
+			<option value="R10 – Lanao del Norte">Lanao del Norte</option>
+			<option value="R10 – Misamis Occidental">Misamis Occidental</option>
+			<option value="R10 – Misamis Oriental">Misamis Oriental</option> 
+</optgroup>
+
+<optgroup label="R11 – Davao Region"> 
+			<option value="R11 – Compostela Valley">Compostela Valley</option> 
+			<option value="R11 – Davao City">Davao City</option> 
+			<option value="R11 – Davao del Norte">Davao del Norte</option> 
+			<option value="R11 – Davao del Sur">Davao del Sur</option> 
+			<option value="R11 – Davao Oriental">Davao Oriental</option>
+			<option value="R11 – Davao Occidental">Davao Occidental</option> 
+</optgroup>
+
+<optgroup label="R12 - SOCCSKSARGEN"> 
+			<option value="R12 – Cotabato">Cotabato</option> 
+			<option value="R12 – Cotabato City">Cotabato City</option> 
+			<option value="R12 – General Santos">General Santos</option> 
+			<option value="R12 – Sarangani">Sarangani</option> 
+			<option value="R12 – South Cotabato">South Cotabato</option>
+			<option value="R12 – Sultan Kudarat">Sultan Kudarat</option> 
+</optgroup>
+
+<optgroup label="R13 - CARAGA"> 
+			<option value="R13 – Agusan del Norte">Agusan del Norte</option> 
+			<option value="R13 – Agusan del Sur">Agusan del Sur</option> 
+			<option value="R13 - Butuan">Butuan</option> 
+			<option value="R13 – Dinagat Islands">Dinagat Islands</option> 
+			<option value="R13 – Surigao del Norte">Surigao del Norte</option>
+			<option value="R13 – Surigao del Sur">Surigao del Sur</option> 
+</optgroup>
+
+<optgroup label="ARMM - Autonomous Region in Muslim Mindanao"> 
+			<option value="ARMM - Basilan">Basilan</option> 
+			<option value="ARMM – Lanao del Sur">Lanao del Sur</option> 
+			<option value="ARMM - Maguindanao">Maguindanao</option> 
+			<option value="ARMM - Sulu">Sulu</option> 
+			<option value="ARMM – Tawi-Tawi">Tawi-Tawi</option> 
+</optgroup>
+			</select>
 			<small id="errorprojloc" style="color:#ff0000;display:block"></small>
+			<b>Estimated Cost:</b>
+			<input type="text" name="projcost" id="projcost" maxlength="20">
+			<small id="errorprojcost" style="color:#ff0000;display:block"></small>
 			<br><br>
 			<input type="submit" value="Submit" id="btnsubmit">
 			</form>
@@ -52,6 +261,14 @@
 			{
 			$("#fullname").val(data.fullname);
 			$("#email").val(data.email);
+			var year = new Date().getFullYear();
+			var htmltag = "";
+			for (var i= new Date().getFullYear(); i < year + 5; i++)
+			{
+			htmltag = htmltag + "<option>"+i.toString()+"</option>";
+			}
+			$("#projyear").append(htmltag).trigger("create");
+			$("#projyear").selectmenu( "refresh" );
 			});
 	}, 500);
 	var form = $("#submitprojform");
@@ -76,13 +293,19 @@
 							required: true,
 							minlength: 8
 						},
+						projyear: {
+							required: true
+						},
 						projpur: {
 							required: true,
 							minlength: 8
 						},
 						projloc: {
+							required: true
+						},
+						projcost: {
 							required: true,
-							minlength: 8
+							number: true
 						}
 					},
 					messages: {
@@ -102,8 +325,7 @@
 							minlength: "Project Purpose Details must be at least 8 characters long"
 						},
 						projloc: {
-							required: "Please provide the location of your project",
-							minlength: "Your Desired Project Location must be at least 8 characters long"
+							required: "Please provide the location of your project"
 						}
 					}
 			});
@@ -115,10 +337,12 @@
 					$.getJSON("http://gcccs.org/ibantay/submitproj.php?callback=?", form.serialize(),function(data)
 					{
 						alert("Submit Complete!");
+						$.mobile.changePage( "home.html", { changeHash: true });
 						$.mobile.loading("hide");
 						
 					}).fail(function(data){
 						alert("Submit Failed!");
+						$.mobile.changePage( "home.html", { changeHash: true });
 						$.mobile.loading("hide");
 						
 					});

@@ -13,6 +13,7 @@
 	<script src="js/numeral.min.js"></script>
 			<div data-role="header" data-theme="f">
 			<span style="float:left;margin-left:10px;"><a href="objdescselect.html" target="_self"><br><img id="menupanel" src="images/panel.png" style="height:42px;"></a></span>
+			<span style="float:right;margin-right:10px;"><a href="home.html" target="_self"><br><img id="menupanel" src="images/home.png" style="height:42px;"></a></span>
 			<br>
 			<h4>Projects</h4><br>
 			</div>
@@ -31,7 +32,7 @@
 			var pagecont = $("#listall");
 			var saroinfo = "";
 			$.each(data.data, function(key, value) {
-			saroinfo = '<li><a href="javascript:getsarodetails(\''+value['id']+'\')"><h4>'+value['description']+'<br>'+value['program_description']+'</h4><p>Amount: Php. '+numeral(value['amount']).format('0,0')+'</p></a></li>';
+			saroinfo = '<li><a href="javascript:getsarodetails(\''+value['id']+'\')"><h4>'+value['description']+'<br>'+value['program_description']+'</h4><p>Amount: Php. '+numeral(Math.abs(value['amount'])).format('0,0')+'</p></a></li>';
 			pagecont.append(saroinfo).trigger('create');
 			pagecont.listview( "refresh" );
 			});

@@ -13,9 +13,11 @@
 	<script src="js/numeral.min.js"></script>
 			<div data-role="header" data-theme="f">
 			<span style="float:left;margin-left:10px;"><a href="getfromregion.html" target="_self"><br><img id="menupanel" src="images/panel.png" style="height:42px;"></a></span>
+			<span style="float:right;margin-right:10px;"><a href="home.html" target="_self"><br><img id="menupanel" src="images/home.png" style="height:42px;"></a></span>
 			<br>
-			<h4 id="headtitle">SARO Details</h4>
+			<h4>Allotment Release<br>Details</h4>
 			<br>
+			
 			</div>
 			<div data-role="content" >
 			<div id="pagecont">
@@ -30,22 +32,25 @@
 			</div>
 	<script>
 	$.ajaxSetup({ cache: false });
-	function getlikes(id){ 
-	var btnslct = $("#spost-"+id);
-	if(btnslct.hasClass("postliked") == true)
-	 {
-	btnslct.removeClass("postliked").addClass("postnotliked").buttonMarkup({ theme: "c" });
-	$.getJSON("http://gcccs.org/ibantay/likepost.php?callback=?",{username : localStorage.getItem("datausername"), entryID : id, type: 'd'},function(data)
-			{
-			});
-	 }
-	else
+	function getlikes(id,type){ 
+	$("#dcpost-"+id).buttonMarkup({ theme: "c" });
+	$("#ilpost-"+id).buttonMarkup({ theme: "c" });
+	$("#ulpost-"+id).buttonMarkup({ theme: "c" });
+	if(type == 'l')
 	{
-	btnslct.removeClass("postnotliked").addClass("postliked").buttonMarkup({ theme: "f" });
-	$.getJSON("http://gcccs.org/ibantay/likepost.php?callback=?",{username : localStorage.getItem("datausername"), entryID : id, type: 'l'},function(data)
-			{
-			});
+	$("#ilpost-"+id).buttonMarkup({ theme: "f" });
 	}
+	else if(type == 'd')
+	{
+	$("#ulpost-"+id).buttonMarkup({ theme: "f" });
+	}
+	else if(type == 'dc')
+	{
+	$("#dcpost-"+id).buttonMarkup({ theme: "f" });
+	}
+	$.getJSON("http://gcccs.org/ibantay/likepost.php?callback=?",{username : localStorage.getItem("datausername"), entryID : id, type: type},function(data)
+	{
+	});
 	}
 	setTimeout(function() { 
 	$.getJSON("http://gcccs.org/ibantay/getresponse.php?callback=?",{id: localStorage.getItem("dataIDs")},function(data)
@@ -54,20 +59,27 @@
 			var saroinfo = "";
 			var controloptions ="";
 			$.each(data.data, function(key, value) {
-			saroinfo = '<li data-role="list-divider">Information</li><li><table cellspacing="0"cellpadding="0" class="desctable"><tr><th>Department Code:</th><td>'+value['department_code']+'</td></tr><tr><th>Department Code:</th><td>'+value['agency_code']+'</td></tr><tr><th>Operating Unit:</th><td>'+value['operating_unit']+'</td></tr><tr><th>Special Purpose Fund Code:</th><td>'+value['spf_code']+'</td></tr><tr><th>Sub Special Purpose Fund Code:</th><td>'+value['sub_spf_code']+'</td></tr><tr><th>AGENCY/SUB-AGENCY/SPF/SUBSPF Description:</th><td>'+value['description']+'</td></tr><tr><th>Recipient Fund Code:</th><td>'+value['fund_code']+'</td></tr><tr><th>Region:</th><td>'+value['region']+'</td></tr><tr><th>Fund Purpose:</th><td>'+value['purpose']+'</td></tr><tr><th>Appropriation Source:</th><td>'+value['appro_src']+'</td></tr><tr><th>Program/Activity/Project Code:</th><td>'+value['program_code']+'</td></tr><tr><th>Description of Program/Activity/Project Code:</th><td>'+value['program_description']+'</td></tr><tr><th>SubObject Code:</th><td>'+value['object_code']+'</td></tr><tr><th>SubObject Description:</th><td>'+value['object_description']+'</td></tr><tr><th>SARO Amount from eBUDGET:</th><td>Php. '+numeral(value['amount']).format('0,0')+'</td></tr><tr><th>Date of Release:</th><td>'+value['issue_date']+'</td></tr><tr><th>Barcode No.:</th><td>'+value['barcode_no']+'</td></tr><tr><th>SARO No.:</th><td>'+value['saro_no']+'</td></tr></table></li>';
-			pagecont.append(saroinfo).trigger('create');
+			saroinfo = '<li data-role="list-divider">Information</li><li><table width="100%" cellspacing="0"cellpadding="0" class="desctable"><tr><th>Department Code:</th><td>'+value['department_code']+'</td></tr><tr><th>Department Code:</th><td>'+value['agency_code']+'</td></tr><tr><th>Operating Unit:</th><td>'+value['operating_unit']+'</td></tr><tr><th>Special Purpose Fund Code:</th><td>'+value['spf_code']+'</td></tr><tr><th>Sub Special Purpose Fund Code:</th><td>'+value['sub_spf_code']+'</td></tr><tr><th>AGENCY/SUB-AGENCY/SPF/SUBSPF Description:</th><td>'+value['description']+'</td></tr><tr><th>Recipient Fund Code:</th><td>'+value['fund_code']+'</td></tr><tr><th>Region:</th><td>'+value['region']+'</td></tr><tr><th>Fund Purpose:</th><td>'+value['purpose']+'</td></tr><tr><th>Appropriation Source:</th><td>'+value['appro_src']+'</td></tr><tr><th>Program/Activity/Project Code:</th><td>'+value['program_code']+'</td></tr><tr><th>Description of Program/Activity/Project Code:</th><td>'+value['program_description']+'</td></tr><tr><th>SubObject Code:</th><td>'+value['object_code']+'</td></tr><tr><th>SubObject Description:</th><td>'+value['object_description']+'</td></tr><tr><th>SARO Amount from eBUDGET:</th><td>Php. '+numeral(Math.abs(value['amount'])).format('0,0')+'</td></tr><tr><th>Date of Release:</th><td>'+value['issue_date']+'</td></tr><tr><th>Barcode No.:</th><td>'+value['barcode_no']+'</td></tr><tr><th>SARO No.:</th><td>'+value['saro_no']+'</td></tr></table></li>';
 			$.getJSON("http://gcccs.org/ibantay/retrievelikes.php?callback=?",{entryID: value['id'],username: localStorage.getItem("datausername")},function(data)
 			{
-			var disablelike = ["c",'class="postnotliked" '];
+			var dis = ['f','c','c'];
 			if(data.response == "liked")
 			{
-				disablelike[0] = 'f';
-				disablelike[1] = 'class="postliked" ';
+				dis[0] = 'c';
+				dis[1] = 'f';
 			}
-			controloptions = '<div data-role="controlgroup" data-type="horizontal"><a id="spost-'+value['id']+'" href="javascript:getlikes(\''+value['id']+'\')" data-role="button" data-theme="'+disablelike[0]+'" '+disablelike[1]+'>Like Me!</a><a href="#" data-role="button" data-theme="c">Facebook</a><a href="#" data-role="button" data-theme="c">Twitter</a></div>';
+			else if(data.response == "disliked")
+			{
+			dis[0] = 'c';
+				dis[2] = 'f';
+			}
+			saroinfo = saroinfo + '<li data-role="list-divider">Status</li><li><span><a data-role="button" data-theme="c" data-inline="true"><img src="images/il.png" style="height:36px;vertical-align:middle;">&nbsp;&nbsp;'+data.likecount+'</a></span>&nbsp;<span><a data-role="button" data-theme="c" data-inline="true"><img src="images/ul.png" style="height:36px;vertical-align:middle;">&nbsp;&nbsp;'+data.dislikecount+'</a></span></li>'
+			pagecont.append(saroinfo).trigger('create');
+			pagecont.listview( "refresh" );
+			controloptions = '<div style="width:410px;margin-left:auto;margin-right:auto;display:block"><div data-role="controlgroup" data-type="horizontal"><a href="javascript:getlikes(\''+value['id']+'\',\'dc\')" id="dcpost-'+value['id']+'" data-role="button" data-theme="'+dis[0]+'" title="Don\'t Care"><img src="images/dc1.png" style="height:36px;"><br><span style="font-weight:normal;"><small>Angry</small></span></a><a href="javascript:getlikes(\''+value['id']+'\',\'l\')" id="ilpost-'+value['id']+'" data-role="button" data-theme="'+dis[1]+'" title="You Like It"><img src="images/il.png" style="height:36px;"><br><span style="font-weight:normal;"><small>Happy</small></span></a><a href="javascript:getlikes(\''+value['id']+'\',\'d\')" id="ulpost-'+value['id']+'" data-role="button" data-theme="'+dis[2]+'" title="You Dislike It"><img src="images/ul.png" style="height:36px;"><br><span style="font-weight:normal;"><small>Sad</small></span></a><a href="#" data-role="button" data-theme="c"><img src="images/fb.png" style="height:36px;"><br><span style="font-weight:normal;"><small>Share</small></span></a><a href="https://twitter.com/intent/tweet?button_hashtag=IBantay&text='+encodeURIComponent(value['description'])+'%20Project%20-%20Amount%20of%20Project:%20Php.%20'+numeral(Math.abs(value['amount'])).format('0,0')+'" target="_blank" data-role="button" data-theme="c"><img src="images/tw.png" style="height:36px;"><br><span style="font-weight:normal;"><small>Tweet</small></span></a></div></div>';
 			$("#scontrols").append(controloptions).trigger('create');
 			});
-			pagecont.listview( "refresh" );
+			
 			});
 			$("#imgloader").hide();
 			});

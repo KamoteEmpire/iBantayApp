@@ -251,10 +251,11 @@
 					$.getJSON("http://gcccs.org/ibantay/uregister.php?callback=?", form.serialize(),function(data)
 					{
 						alert("Registration Complete!");
+						$.mobile.changePage( "loginpage.html", { changeHash: true });
 						$.mobile.loading("hide");
-						
 					}).fail(function(data){
 						alert("Registration Failed!");
+						$.mobile.changePage( "loginpage.html", { changeHash: true });
 						$.mobile.loading("hide");
 						
 					});

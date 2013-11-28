@@ -3,7 +3,7 @@
         xmlns:rim="http://www.blackberry.com/ns/widgets"
         version="1.0.0" id="ibantayph">
   <author href=""
-          rim:copyright="">Arnie Armada</author>
+          rim:copyright="">Gordon College CCS</author>
 
   <name>iBantay</name>
 
@@ -24,6 +24,16 @@
   <content src="index.html" />
 
   <icon src="images/icon-150.png"/>
+  
+	<icon src="images/icon-150.png" gap:platform="android" gap:density="ldpi" />
+	<icon src="images/icon-150.png" gap:platform="android" gap:density="mdpi" />
+	<icon src="images/icon-150.png" gap:platform="android" gap:density="hdpi" />
+	<icon src="images/icon-150.png" gap:platform="android" gap:density="xhdpi" />
+
+	<gap:splash src="images/splash.png" gap:platform="android" gap:density="ldpi" />
+	<gap:splash src="images/splash.png" gap:platform="android" gap:density="mdpi" />
+	<gap:splash src="images/splash.png" gap:platform="android" gap:density="hdpi" />
+	<gap:splash src="images/splash.png" gap:platform="android" gap:density="xhdpi" />
   
 <access uri="*" subdomains="true"/>
 

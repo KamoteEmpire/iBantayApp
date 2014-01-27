@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.kamote.ibantay" version="1.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.gordoncollegeccs.edu.ph.ibantay" version="1.0">
 
 	<name>iBantay</name>
 	<description>iBantay</description>
@@ -17,6 +17,11 @@
 
 	<!-- retina iPad support: PhoneGap 2.5.0+ only -->
 	<icon src="images/icon-144.png" gap:platform="ios" width="144" height="144" />
+	
+	<icon src="images/icon-76.png" gap:platform="ios" width="76" height="76" />
+	<icon src="images/icon-120.png" gap:platform="ios" width="120" height="120" />
+	<icon src="images/icon-152.png" gap:platform="ios" width="152" height="152" />
+
 
 	<icon src="images/icon-150.png" gap:role="default" />
 	<preference name="phonegap-version" value="3.1.0" />

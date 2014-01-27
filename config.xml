@@ -11,12 +11,12 @@
 		<gap:platform name="blackberry" project="widgets"/>
 	</gap:platforms>
 	
-	<icon src="icons/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
-	<icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
-	<icon src="icons/ios/icon-114.png" gap:platform="ios" width="114" height="114" />
+	<icon src="images/icon-57.png" gap:platform="ios" width="57" height="57" />
+	<icon src="images/icon-72.png" gap:platform="ios" width="72" height="72" />
+	<icon src="images/icon-114.png" gap:platform="ios" width="114" height="114" />
 
 	<!-- retina iPad support: PhoneGap 2.5.0+ only -->
-	<icon src="icons/ios/icon-144.png" gap:platform="ios" width="144" height="144" />
+	<icon src="images/icon-144.png" gap:platform="ios" width="144" height="144" />
 
 	<icon src="images/icon-150.png" gap:role="default" />
 	<preference name="phonegap-version" value="3.1.0" />
